@@ -1,10 +1,12 @@
 import React from 'react';
 import Aux from '../auxiliary/Auxiliary';
+import Toolbar from '../../components/toolbar/Toolbar';
 
 const layout = (props) => {
     return(
         <Aux>
-            <p>toolbar</p>
+            <Toolbar/>
+            <main>{props.children}</main>
         </Aux>
     )
 };

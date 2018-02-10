@@ -1,0 +1,8 @@
+.Toolbar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ToolbarItem {
+    display: flex;
+}
