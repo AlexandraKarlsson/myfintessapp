@@ -67,16 +67,17 @@ class FitnessGuru extends Component {
 
     constructor(props){
         super(props);
-        this.state.currentBodypart = this.state.defaultBodypart;
-        this.state.currentExercises = this.state.exercises[1]; //TODO: change undefined
+        this.state.currentExercises = this.state.exercises[this.state.currentBodypart]; //TODO: change undefined
     };
 
-    bodypartHandler = (bodypartID) => {
-
+    bodypartHandler = (bodypart) => {
+        if(this.state.currentBodypart !== bodypart) {
+            this.setState({currentBodypart: bodypart})
+        }
     }
 
-    render(){
-
+    render() {
+        this.state.currentExercises = this.state.exercises[this.state.currentBodypart];
         return(
         <Aux>
             <BodypartControll bodypart={this.state.bodyparts} clicked={this.bodypartHandler}/>
