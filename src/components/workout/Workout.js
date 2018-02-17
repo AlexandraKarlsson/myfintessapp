@@ -5,7 +5,7 @@ import './Workout.css';
 const workout = (props) => {
 
     const workout = props.exercises.map(exercise => {
-        return(<Exercise name={exercise.name} imageName={exercise.imageName}/>)
+        return(<Exercise key={exercise.id} name={exercise.name} imageName={exercise.imageName}/>)
     });
 
     return(

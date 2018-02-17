@@ -12,7 +12,7 @@ const toolbarStyle = {
 
     return(
         <div style={toolbarStyle}>
-            <logo>LOGO</logo>
+            <div>LOGO</div>
             <p>YOUR FITNESS APP!:)</p>
             <nav>MENU</nav>
         </div>

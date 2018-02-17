@@ -26,17 +26,17 @@ class FitnessGuru extends Component {
                 }
         ], [
                 {
-                    id : 0,
+                    id : 3,
                     name : 'Squat',
                     imageName : 'SQUAT IMAGE'
                 },
                 {
-                    id : 1,
+                    id : 4,
                     name : 'Deadlift',
                     imageName : 'DEADLIFT IMAGE'
                 },
                 {
-                    id : 2,
+                    id : 5,
                     name : 'Lunges',
                     imageName : 'LUNGES IMAGE'
                 }
@@ -67,20 +67,35 @@ class FitnessGuru extends Component {
 
     constructor(props){
         super(props);
-        this.state.currentExercises = this.state.exercises[this.state.currentBodypart]; //TODO: change undefined
+        this.state.currentExercises = this.state.exercises[this.state.currentBodypart]; 
     };
 
-    bodypartHandler = (bodypart) => {
-        if(this.state.currentBodypart !== bodypart) {
-            this.setState({currentBodypart: bodypart})
+    bodypartHandler = (bodypartIndex) => {
+        if(this.state.currentBodypart !== bodypartIndex) {
+            const currentExercises = this.state.exercises[bodypartIndex];
+            this.setState({currentBodypart: bodypartIndex, currentExercises: currentExercises})
         }
     }
 
+    exerciseListHandler = (exerciseIndex) => {
+        
+        // villkor : checka om exercisen inte finns i workout
+        //if() {
+
+        //}
+        // copy the exercise
+        let workoutExercise = {...this.state.exercises[this.state.currentBodypart][exerciseIndex]};
+        
+        //lägg till i workout
+        let workoutUpdated = [...this.state.workout];
+        workoutUpdated.push(workoutExercise);
+        this.setState({workout: workoutUpdated});
+    }
+
     render() {
-        this.state.currentExercises = this.state.exercises[this.state.currentBodypart];
         return(
         <Aux>
-            <BodypartControll bodypart={this.state.bodyparts} clicked={this.bodypartHandler}/>
+            <BodypartControll bodyparts={this.state.bodyparts} clicked={this.bodypartHandler}/>
             <ExerciseList exercises={this.state.currentExercises}/>
             <Workout exercises={this.state.workout}/>
         </Aux>
