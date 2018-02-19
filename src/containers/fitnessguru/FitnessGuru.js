@@ -56,13 +56,7 @@ class FitnessGuru extends Component {
             }
         ],
 
-        workout : [
-            {
-                id : 2,
-                name : 'Narrow bench press',
-                imageName : 'NARROW BENCH PRESS IMAGE'
-            }
-        ]
+        workout : []
     }
 
     constructor(props){
@@ -77,26 +71,30 @@ class FitnessGuru extends Component {
         }
     }
 
-    exerciseListHandler = (exerciseIndex) => {
+    exerciseListHandler = (exerciseId, exerciseIndex) => {
         
         // villkor : checka om exercisen inte finns i workout
-        //if() {
+        const exist = this.state.workout.find((workoutExercise) => {
+            //return (workoutExercise.id == exerciseIndex ? true : false)
+            return(workoutExercise.id == exerciseId)
+        });
 
-        //}
-        // copy the exercise
-        let workoutExercise = {...this.state.exercises[this.state.currentBodypart][exerciseIndex]};
-        
-        //lägg till i workout
-        let workoutUpdated = [...this.state.workout];
-        workoutUpdated.push(workoutExercise);
-        this.setState({workout: workoutUpdated});
+        if(!exist) {
+            // copy the exercise
+            let workoutExercise = {...this.state.exercises[this.state.currentBodypart][exerciseIndex]};
+            
+            //lägg till i workout
+            let workoutUpdated = [...this.state.workout];
+            workoutUpdated.push(workoutExercise);
+            this.setState({workout: workoutUpdated});
+        }
     }
 
     render() {
         return(
         <Aux>
             <BodypartControll bodyparts={this.state.bodyparts} clicked={this.bodypartHandler}/>
-            <ExerciseList exercises={this.state.currentExercises}/>
+            <ExerciseList exercises={this.state.currentExercises} clicked={this.exerciseListHandler}/>
             <Workout exercises={this.state.workout}/>
         </Aux>
 
