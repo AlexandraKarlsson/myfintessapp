@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import ExerciseList from '../../components/exerciselist/ExerciseList';
-import Aux from '../../hoc/auxiliary/Auxiliary';
 import Workout from '../../components/workout/Workout';
 import BodypartControll from '../../components/controlls/BodypartControll';
 
@@ -71,12 +70,12 @@ class FitnessGuru extends Component {
         }
     }
 
-    exerciseListHandler = (exerciseId, exerciseIndex) => {
+    exerciseListAddHandler = (exerciseId, exerciseIndex) => {
         
         // villkor : checka om exercisen inte finns i workout
         const exist = this.state.workout.find((workoutExercise) => {
             //return (workoutExercise.id == exerciseIndex ? true : false)
-            return(workoutExercise.id == exerciseId)
+            return(workoutExercise.id === exerciseId)
         });
 
         if(!exist) {
@@ -90,13 +89,27 @@ class FitnessGuru extends Component {
         }
     }
 
+    workoutRemoveHandler = (exerciseId) => {
+        let workoutUpdated = [...this.state.workout];
+        const removeIndex = workoutUpdated.findIndex(exercise => {
+            return exercise.id === exerciseId;
+        })
+        workoutUpdated.splice(removeIndex,1);
+        this.setState({workout: workoutUpdated});
+    }
+
     render() {
+        const fitnessGuruStyle = {
+            backgroundColor: '#FFE0B2',
+            height: '100vh'
+        }
+
         return(
-        <Aux>
+        <div style={fitnessGuruStyle}>
             <BodypartControll bodyparts={this.state.bodyparts} clicked={this.bodypartHandler}/>
-            <ExerciseList exercises={this.state.currentExercises} clicked={this.exerciseListHandler}/>
-            <Workout exercises={this.state.workout}/>
-        </Aux>
+            <ExerciseList exercises={this.state.currentExercises} clicked={this.exerciseListAddHandler}/>
+            <Workout exercises={this.state.workout} clicked={this.workoutRemoveHandler}/>
+        </div>
 
     );
     }

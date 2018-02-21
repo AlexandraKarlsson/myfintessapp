@@ -7,7 +7,9 @@ const toolbarStyle = {
     display: 'flex',
     justifyContent: 'space-between',
     padding: '0',
-    margin: '0'
+    margin: '0',
+    backgroundColor: '#E65100',
+    color: 'white'
 }
 
     return(

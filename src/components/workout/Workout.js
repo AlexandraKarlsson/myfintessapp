@@ -4,8 +4,14 @@ import './Workout.css';
 
 const workout = (props) => {
 
-    const workout = props.exercises.map(exercise => {
-        return(<Exercise key={exercise.id} name={exercise.name} imageName={exercise.imageName}/>)
+    const workout = props.exercises.map((exercise, index) => {
+        return(
+            <Exercise 
+                key={exercise.id} 
+                name={exercise.name} 
+                clicked={() => props.clicked(exercise.id)} 
+                imageName={exercise.imageName}/>
+            )
     });
 
     return(
