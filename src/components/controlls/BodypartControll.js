@@ -6,7 +6,11 @@ const bodypartControll = (props) => {
         return <BodypartControl key={bodypart.id} clicked={()=> props.clicked(bodypartIndex)} name={bodypart.name} />
     });
 
-    return(<div>{bodypartControls}</div>);
+    const bodypartControlStyle = {
+        margin: 'auto'
+    }
+
+    return(<div style={bodypartControlStyle}>{bodypartControls}</div>);
 }
 
 export default bodypartControll;

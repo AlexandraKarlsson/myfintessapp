@@ -1,5 +1,6 @@
 import React from 'react';
 import classes from './Toolbar.css';
+import Logo from '../logo/Logo';
 
 const toolbar = (props) => {
 
@@ -12,11 +13,15 @@ const toolbarStyle = {
     color: 'white'
 }
 
+const navStyle = {
+    margin: '25px 20px 20px 20px'
+}
+
     return(
         <div style={toolbarStyle}>
-            <div>LOGO</div>
-            <p>YOUR FITNESS APP!:)</p>
-            <nav>MENU</nav>
+            <Logo/>
+            <h1>YOUR FITNESS APP!:)</h1>
+            <nav style={navStyle}>MENU</nav>
         </div>
     );
 }
