@@ -7,7 +7,8 @@ const bodypartControll = (props) => {
     });
 
     const bodypartControlStyle = {
-        margin: 'auto'
+        padding: '10px 0px',
+        textAlign: 'center'
     }
 
     return(<div style={bodypartControlStyle}>{bodypartControls}</div>);

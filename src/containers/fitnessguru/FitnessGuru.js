@@ -100,7 +100,7 @@ class FitnessGuru extends Component {
 
     render() {
         const fitnessGuruStyle = {
-            backgroundColor: '#FFE0B2',
+            backgroundColor: '#E1BEE7',
             height: '100vh'
         }
 

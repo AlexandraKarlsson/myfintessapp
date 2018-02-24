@@ -9,7 +9,7 @@ const toolbarStyle = {
     justifyContent: 'space-between',
     padding: '0',
     margin: '0',
-    backgroundColor: '#E65100',
+    backgroundColor: '#8E24AA',
     color: 'white'
 }
 
